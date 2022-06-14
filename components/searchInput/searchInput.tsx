@@ -1,8 +1,8 @@
 import { useCallback, useRef, useState } from 'react'
 import { RgbColorPicker } from 'react-colorful'
 import { ColorType, getHex } from '../../types/colorType'
-import useClickOutside from '../../util/useClickOutside'
 import styles from './SearchInput.module.scss'
+import useOnClickOutside from 'use-onclickoutside'
 
 type Props = {
     bgColor : ColorType,
@@ -15,7 +15,7 @@ function SearchInput( {bgColor, searchInk} : Props ) {
     const popover = useRef(null)
 
     const close = useCallback(() => toggleOpen(false), [])
-    useClickOutside(popover, close)
+    useOnClickOutside(popover, close)
 
     function handleClick() {
         searchInk( tempColor )
