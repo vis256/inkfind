@@ -12,7 +12,7 @@ type Props = {
     queryOnLoad : boolean
 }
 
-function getScrollInfo() {
+function GetScrollInfo() {
   // https://stackoverflow.com/a/68609331
   const [isOnTop, setOnTop] = useState(true)
 
@@ -49,7 +49,7 @@ function MainPage( { queryOnLoad } : Props ) {
     } 
   }, [router.isReady])
 
-  const onTop = getScrollInfo()
+  const onTop = GetScrollInfo()
   
   return <>
       <div className={styles.background} style={{ backgroundColor: getHex( bgColor ) }}></div>
