@@ -10,10 +10,14 @@ type Props = {
     color : ColorType
 }
 
+type APIData = {
+    closestInks : Array<{i : Number, d : Number}>
+}
+
 const fetcher = (url: RequestInfo) => fetch(url).then(res => res.json())
 
 function InkList( { color }  : Props ) {
-    const { data, error }: SWRResponse<{data : { closestInks : Array<{i : Number, d : Number}> }}, boolean> = useSwr(`/api/find/${ getHex( color ).substring(1) }`, fetcher)
+    const { data, error }: SWRResponse<{ data : APIData }, boolean> = useSwr(`/api/find/${ getHex( color ).substring(1) }`, fetcher)
     const [itemsLoaded, setItemsLoaded] = useState(26)
 
     if (error) return <div>Failed to load user</div>
