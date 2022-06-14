@@ -9,8 +9,7 @@ import Footer from '../Footer/Footer'
 import getCorrectTextColor from '../../util/getCorrectTextColor'
 
 type Props = {
-    queryOnLoad : boolean,
-    defaultHex : ColorType
+    queryOnLoad : boolean
 }
 
 function getScrollInfo() {
@@ -33,9 +32,9 @@ function getScrollInfo() {
 }
 
 
-function MainPage( { queryOnLoad, defaultHex } : Props ) {
+function MainPage( { queryOnLoad } : Props ) {
   const router = useRouter()
-  const [bgColor, setBgColor] = useState(defaultHex)
+  const [bgColor, setBgColor] = useState( {r : 126, g : 20, b : 150} )
   const [toQuery, setToQuery] = useState(false)
 
   function searchInk( hex : ColorType ) {
