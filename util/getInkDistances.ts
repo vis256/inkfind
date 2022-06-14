@@ -26,14 +26,14 @@ function compareItems( a : any, b : any ) {
     return a.d - b.d
 }
 
-export default function getInkDistances( targetHex : string ) {
+export default function getInkDistances( targetHex : string ) : Array<{ i : number, d : number }> {
     // https://stackoverflow.com/a/12947109
-    const c = '0x' + targetHex
+    const c : number = parseInt('0x' + targetHex, 16)
     const r = (c>>16)&255
     const g = (c>>8)&255
     const b = c&255
 
-    let a : Array<{ i : Number, d : Number }> = []
+    let a : Array<{ i : number, d : number }> = []
 
     inks?.forEach((ink, i) => {
         const d = getDistance({r,g,b}, ink.colorInformation.colors[0])
