@@ -5,6 +5,7 @@ import { ColorType, getHex } from '../../types/colorType'
 import ColorCard from '../ColorCard/ColorCard'
 import InkCard from "../InkCard/InkCard"
 import styles from "./InkList.module.scss"
+import lstyles from "../LoadingCard/LoadingCard.module.scss"
 
 type Props = {
     color : ColorType
@@ -21,7 +22,10 @@ function InkList( { color }  : Props ) {
     const [itemsLoaded, setItemsLoaded] = useState(26)
 
     if (error) return <div>Failed to load user</div>
-    if (!data) return <div>Loading...</div>
+    if (!data) return 
+        <div className={ styles.loading }>
+            <div className={ lstyles.lds_ellipsis }><div></div><div></div><div></div><div></div></div>
+        </div> 
 
     const numberOfItemsToLoad = 8
 
@@ -31,7 +35,11 @@ function InkList( { color }  : Props ) {
             dataLength={ itemsLoaded }
             next={ () => { setItemsLoaded(itemsLoaded + numberOfItemsToLoad) } }
             hasMore={ true }
-            loader={<h4>Loading...</h4>}
+            loader={
+                <div className={ styles.loading }>
+                    <div className={ lstyles.lds_ellipsis }><div></div><div></div><div></div><div></div></div>
+                </div> 
+            }
             endMessage={<div>No more data</div>}
             className={ styles.infiniteScroll }
         >
