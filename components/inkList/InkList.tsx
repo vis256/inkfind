@@ -22,10 +22,9 @@ function InkList( { color }  : Props ) {
     const [itemsLoaded, setItemsLoaded] = useState(26)
 
     if (error) return <div>Failed to load user</div>
-    if (!data) return 
-        <div className={ styles.loading }>
-            <div className={ lstyles.lds_ellipsis }><div></div><div></div><div></div><div></div></div>
-        </div> 
+    if (!data) return <div className={ styles.loading }>
+        <div className={ lstyles.lds_ellipsis }><div></div><div></div><div></div><div></div></div>
+    </div>
 
     const numberOfItemsToLoad = 8
 
