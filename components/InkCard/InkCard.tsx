@@ -3,6 +3,7 @@ import useSwr, {SWRResponse} from "swr";
 import styles from "./InkCard.module.scss"
 import getCorrectTextColor from "../../util/getCorrectTextColor";
 import { getHex } from "../../types/colorType";
+import LoadingCard from "../LoadingCard/LoadingCard";
 
 const fetcher = (url: RequestInfo) => fetch(url).then(res => res.json())
 
@@ -17,7 +18,7 @@ function InkCard( { ink } : Props ) {
     const { data, error }: SWRResponse<{data : InkDataType}, boolean> = useSwr(`/api/inkData/${ink.i}`, fetcher)
 
     if (error) return <div>Failed to load user</div>
-    if (!data) return <div>Loading...</div>
+    if (!data) return <LoadingCard />
 
     const inkData : InkDataType = data.data;
 
