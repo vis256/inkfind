@@ -9,7 +9,7 @@ type Props = {
 
 function Footer( { bgColor } : Props ) {
     return <div className={ styles.footer } style={{ color: getCorrectTextColor( bgColor ) }}>
-        <a href="https://github.com/nebulazc/inkfind"> <AiFillGithub /> </a> 
+        <a href="https://github.com/vis256/inkfind"> <AiFillGithub /> </a> 
     </div>
 }
 
